@@ -1,5 +1,6 @@
 package com.example.mapa_firebase
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -75,6 +76,10 @@ class MainActivity : AppCompatActivity() {
                     Log.d("estado", "Se ha iniciado sesion")
                     val user = auth.currentUser
                     updateUI(user)
+                    val intent = Intent(this, MapsActivity::class.java).apply{}
+                    startActivity(intent)
+
+
                 } else {
 
                     Toast.makeText(baseContext, "Authentication failed.", Toast.LENGTH_SHORT).show()
