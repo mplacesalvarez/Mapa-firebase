@@ -48,12 +48,13 @@ class MainActivity : AppCompatActivity() {
         auth.createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
+                    Toast.makeText(baseContext, "Cuenta creada", Toast.LENGTH_SHORT).show()
                     Log.d(TAG, "createUserWithEmail:success")
                     Log.d("estado", "usuario registrado")
                     val user = auth.currentUser
                     updateUI(user)
                 } else {
-                    Toast.makeText(baseContext, "Authentication failed.", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(baseContext, "No es posible crear cuenta", Toast.LENGTH_SHORT).show()
                     Log.w(TAG, "createUserWithEmail:failure", task.exception)
                     Log.d("estado", "usuario NO registrado")
 
@@ -82,7 +83,7 @@ class MainActivity : AppCompatActivity() {
 
                 } else {
 
-                    Toast.makeText(baseContext, "Authentication failed.", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(baseContext, "Usuario o contraseña incorrectos", Toast.LENGTH_SHORT).show()
                     Log.w(TAG, "signInWithEmail:failure", task.exception)
                     Log.d("estado", "No es posible iniciar sesion")
                 }
